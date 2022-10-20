@@ -1,6 +1,9 @@
 var express = require('express')
 var path = require('path')
 var logger = require('morgan')
+var passport = require('passport')
+var session = require('express-session')
+var SQLiteStore = require('connect-sqlite3')(session)
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 const execSync = require('child_process').execSync
@@ -17,6 +20,16 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use(
+  session({
+    secret: '2K7fEBto#LE$%7xr',
+    resave: false,
+    saveUninitialized: false,
+    store: new SQLiteStore({ db: 'sessions.db', dir: './var/db' }),
+  })
+)
+app.use(passport.authenticate('session'))
+
 /**
  * Check to see if we at least have one subnet allowed
  */
@@ -30,7 +43,7 @@ if (glass_config.ip_ranges_to_allow[0] !== '') {
  * Normal web routes
  */
 app.use('/', require('./routes/index'))
-app.use('/login', require('./routes/login'))
+app.use('/login', require('./routes/auth'))
 app.use('/users', require('./routes/users'))
 app.use('/get_stats', require('./routes/get_stats'))
 app.use('/dhcp_statistics', require('./routes/dhcp_statistics_page'))
@@ -57,6 +70,7 @@ app.use('/glass_settings_save', require('./routes/glass_settings_save'))
 /**
  * API Routes
  */
+app.use('/login/password', require('./routes/auth'))
 app.use('/api/get_active_leases/', require('./api/get_active_leases'))
 app.use('/api/get_subnet_details/', require('./api/get_subnet_details'))
 app.use('/api/get_vendor_count/', require('./api/get_vendor_count'))

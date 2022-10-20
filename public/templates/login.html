@@ -46,17 +46,18 @@
                 DHCP Login -- KSC
             </h2>
             <div class="col-md-6 col-md-offset-3">
-                <form>
-                    <label>Username</label>
+                <form action="/login/password" method="post">
+                    <label for="password">Username</label>
                     <div class="form-group">
-                        <input type="text" id="grep_fitler" class="form-control">
+                        <input type="text" id="password" name="password" class="form-control">
                     </div>
-                    <label>Password</label>
+                    <label for="password">Password</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <input type="text" id="grep_fitler" class="form-control">
+                            <input type="password" id="password" name="password" class="form-control">
                         </div>
                     </div>
+                    <button type="submit">Sign in</button>
                 </form>
             </div>
         </div>
