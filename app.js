@@ -1,6 +1,7 @@
 var express = require('express')
 var path = require('path')
 var logger = require('morgan')
+var fs = require('fs')
 var passport = require('passport')
 var session = require('express-session')
 var SQLiteStore = require('connect-sqlite3')(session)

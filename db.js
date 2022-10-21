@@ -1,7 +1,6 @@
 var sqlite3 = require('sqlite3')
 var crypto = require('crypto')
 var path = require('path')
-var fs = require('fs')
 
 var db = new sqlite3.Database(path.join(__dirname, '.db/glass.db'))
 
