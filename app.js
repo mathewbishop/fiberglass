@@ -10,6 +10,7 @@ const execSync = require('child_process').execSync
 var app = express()
 var json_file = require('jsonfile')
 var glass_config = json_file.readFileSync('config/glass_config.json')
+require('dotenv').config()
 
 /**
  * Init Express plugins
@@ -23,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 // Set up the session, cookie maxAge is in milliseconds
 app.use(
   session({
-    secret: '2K7fEBto#LE$%7xr',
+    secret: process.env.SESSION_COOKIE_SECRET,
     resave: false,
     saveUninitialized: false,
     store: new SQLiteStore({ db: 'sessions.db', dir: './var/db' }),
