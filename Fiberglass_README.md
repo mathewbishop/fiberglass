@@ -12,9 +12,13 @@
 
 # Getting started
 
-To install and use `Fiberglass`:
+### Pre-reqs:
 
-**1. Follow the normal install instructions and process outlined in the local [README](./README.md#installation)**
+- `isc-dhcp-server` is installed installed => `apt install isc-dhcp-server`
+
+### To install and use `Fiberglass`:
+
+**1. Follow the normal install instructions and process outlined in the local [README](./README.md#installation), but clone _this_ repo instead of the orignial**
 
 **2. Install package `sqlite3` on the local system: `apt install sqlite3`**
 
