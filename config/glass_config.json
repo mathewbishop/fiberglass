@@ -1,6 +1,6 @@
 {
-  "admin_user": "glassadmin",
-  "admin_password": "glassadmin",
+  "admin_user": "admin",
+  "admin_password": "admin",
   "leases_file": "/var/lib/dhcp/dhcpd.leases",
   "log_file": "/var/log/dhcp.log",
   "config_file": "/etc/dhcp/dhcpd.conf",
