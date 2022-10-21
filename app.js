@@ -20,12 +20,16 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
+// Set up the session, cookie maxAge is in milliseconds
 app.use(
   session({
     secret: '2K7fEBto#LE$%7xr',
     resave: false,
     saveUninitialized: false,
     store: new SQLiteStore({ db: 'sessions.db', dir: './var/db' }),
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 12,
+    },
   })
 )
 app.use(passport.authenticate('session'))
@@ -42,8 +46,8 @@ if (glass_config.ip_ranges_to_allow[0] !== '') {
 /**
  * Normal web routes
  */
-app.use('/', require('./routes/index'))
 app.use('/login', require('./routes/auth'))
+app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
 app.use('/get_stats', require('./routes/get_stats'))
 app.use('/dhcp_statistics', require('./routes/dhcp_statistics_page'))
