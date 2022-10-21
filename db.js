@@ -3,11 +3,6 @@ var crypto = require('crypto')
 var path = require('path')
 var fs = require('fs')
 
-// Make sure the .db directory is created
-if (!fs.existsSync('./.db')) {
-  fs.mkdirSync('./.db')
-}
-
 var db = new sqlite3.Database(path.join(__dirname, '.db/glass.db'))
 
 db.serialize(function () {

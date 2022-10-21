@@ -12,6 +12,11 @@ var json_file = require('jsonfile')
 var glass_config = json_file.readFileSync('config/glass_config.json')
 require('dotenv').config()
 
+// Make sure the .db directory is created; this will contain the sqlite database
+if (!fs.existsSync('./.db')) {
+  fs.mkdirSync('./.db')
+}
+
 /**
  * Init Express plugins
  */
