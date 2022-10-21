@@ -1,6 +1,6 @@
 # Fiberglass
 
-A modification of Chris Miles' (chris.miles.e@gmail.com) Glass (glass-isc-dhcp) web UI for ISC DHCP that includes user authentication.
+`Fiberglass` is a modification of Chris Miles' (chris.miles.e@gmail.com) Glass (glass-isc-dhcp) web UI for ISC DHCP that includes user authentication.
 
 # Overview
 
@@ -22,6 +22,10 @@ To install and use `Fiberglass`:
 
 - add the following entry in the file `SESSION_COOKIE_SECRET=`
 - add a session cookie secret after the equals sign; it can/should be any randomly generated long string, 20 or more characters recommended.
+
+### Note for VSL machines
+
+_Even if running as root, you must still run `sudo npm install` when running `npm install`. The cause for this is unknown at this time._
 
 # Attribution/Credit
 

@@ -27,7 +27,7 @@ app.use(
     secret: process.env.SESSION_COOKIE_SECRET,
     resave: false,
     saveUninitialized: false,
-    store: new SQLiteStore({ db: 'sessions.db', dir: './var/db' }),
+    store: new SQLiteStore({ db: 'sessions.db', dir: './.db' }),
     cookie: {
       maxAge: 1000 * 60 * 60 * 12,
     },
