@@ -10,10 +10,14 @@
     "always-tail2": "^1.0.0",
     "basic-auth": "^1.1.0",
     "body-parser": "^1.18.3",
+    "connect-ensure-login": "^0.1.1",
+    "connect-sqlite3": "^0.9.13",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
+    "dotenv": "^16.0.3",
     "express": "^4.16.3",
     "express-ipfilter": "^0.3.1",
+    "express-session": "^1.17.3",
     "forever": "^0.15.3",
     "humanize": "0.0.9",
     "jade": "~1.11.0",
@@ -21,8 +25,12 @@
     "lodash": "^4.17.10",
     "morgan": "^1.9.0",
     "nodemailer": "^4.6.7",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "readline-sync": "^1.4.10",
     "serve-favicon": "^2.5.0",
     "slack-node": "^0.1.8",
+    "sqlite3": "^5.1.2",
     "ws": "^3.3.3"
   }
 }
