@@ -22,3 +22,15 @@ To install and use `Fiberglass`:
 
 - add the following entry in the file `SESSION_COOKIE_SECRET=`
 - add a session cookie secret after the equals sign; it can/should be any randomly generated long string, 20 or more characters recommended.
+
+# Attribution/Credit
+
+**Chris Miles' (chris.miles.e@gmail.com)**
+
+Author of `glass-isc-dhcp`
+
+**Jared Hanson (jaredhanson@gmail.com, http://jaredhanson.net)**
+
+https://github.com/passport/todos-express-password -- example of implementing passport.js local auth with SQLite
+
+https://www.passportjs.org/tutorials/password/ -- tutorial for implementing passport.js local auth with SQLite
