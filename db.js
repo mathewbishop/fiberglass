@@ -10,6 +10,7 @@ db.serialize(function () {
     'CREATE TABLE IF NOT EXISTS users ( \
     id INTEGER PRIMARY KEY, \
     username TEXT UNIQUE, \
+    auth_group TEXT, \
     hashed_password BLOB, \
     salt BLOB \
   )'
@@ -18,8 +19,8 @@ db.serialize(function () {
   // create an initial user (username: admin, password: admin)
   var salt = crypto.randomBytes(16)
   db.run(
-    'INSERT OR IGNORE INTO users (username, hashed_password, salt) VALUES (?, ?, ?)',
-    ['admin', crypto.pbkdf2Sync('admin', salt, 310000, 32, 'sha256'), salt]
+    'INSERT OR IGNORE INTO users (username, auth_group, hashed_password, salt) VALUES (?, ?, ?, ?)',
+    ['admin', 'admin', crypto.pbkdf2Sync('admin', salt, 310000, 32, 'sha256'), salt]
   )
 })
 

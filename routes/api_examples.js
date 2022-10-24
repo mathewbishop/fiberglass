@@ -5,11 +5,11 @@ var express = require('express')
 var router = express.Router()
 var fs = require('fs')
 var template_render = require('../core/render-template.js')
-var ensureLogIn = require('connect-ensure-login').ensureLoggedIn
+var checkUserAuth = require('../core/checkUserAuth.js')
 
-var ensureLoggedIn = ensureLogIn()
+var checkUser = checkUserAuth()
 
-router.get('/', ensureLoggedIn, function (req, res, next) {
+router.get('/', checkUser, function (req, res, next) {
   api_template = template_render.get_template('api_examples')
 
   res.send(template_render.get_index_template(api_template, req.url))
