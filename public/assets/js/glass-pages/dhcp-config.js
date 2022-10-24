@@ -32,7 +32,7 @@ function save_dhcpv6_config() {
 
 	console.log(dhcpv6_config_form_data)
 
-	$.post( "/dhcpv6_config_save", dhcp_config_form_data, function( data ) {
+	$.post( "/dhcpv6_config_save", dhcpv6_config_form_data, function( data ) {
 		$( "#dhcp_config_result" ).html( data );
 	});
 }
