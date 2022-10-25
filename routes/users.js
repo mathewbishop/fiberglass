@@ -1,11 +1,11 @@
 var express = require('express')
 var router = express.Router()
-var checkUserAuth = require('../core/checkUserAuth.js')
+var authGuard = require('../core/authGuard.js')
 
-var checkUser = checkUserAuth({ groupPermissionLevel: 'admin' })
+var authCheck = authGuard({ groupPermissionLevel: 'admin' })
 
 /* GET users listing. */
-router.get('/', checkUser, function (req, res, next) {
+router.get('/', authCheck, function (req, res, next) {
   res.send('respond with a resource')
 })
 

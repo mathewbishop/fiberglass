@@ -44,7 +44,11 @@ passport.use(
 
 passport.serializeUser(function (user, cb) {
   process.nextTick(function () {
-    cb(null, { id: user.id, username: user.username, authGroup: user.auth_group })
+    cb(null, {
+      id: user.id,
+      username: user.username,
+      authGroup: user.auth_group,
+    })
   })
 })
 

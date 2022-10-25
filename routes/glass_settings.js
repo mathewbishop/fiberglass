@@ -6,12 +6,11 @@ var express = require('express')
 var router = express.Router()
 var fs = require('fs')
 var template_render = require('../core/render-template.js')
-var authorize = require('../core/authorize.js')
-var checkUserAuth = require('../core/checkUserAuth.js')
+var authGuard = require('../core/authGuard.js')
 
-var checkUser = checkUserAuth({ groupPermissionLevel: 'admin' })
+var authCheck = authGuard({ groupPermissionLevel: 'admin' })
 
-router.get('/', checkUser, authorize.auth, function (req, res, next) {
+router.get('/', authCheck, function (req, res, next) {
   glass_settings_template = template_render.get_template('glass_settings')
 
   var json_file = require('jsonfile')
@@ -44,24 +43,6 @@ router.get('/', checkUser, authorize.auth, function (req, res, next) {
       'Log File',
       '<input type="input" class="form-control" id="log_file" placeholder="/var/log/dhcp.log" value="' +
         glass_config.log_file +
-        '">'
-    )
-
-  /* Admin User */
-  input =
-    input +
-    template_render.form_input(
-      'Admin User',
-      '<input type="input" class="form-control" id="admin_user" placeholder="Username" value="' +
-        glass_config.admin_user +
-        '">'
-    )
-  input =
-    input +
-    template_render.form_input(
-      'Admin Password',
-      '<input type="input" class="form-control" id="admin_password" placeholder="Password" value="' +
-        glass_config.admin_password +
         '">'
     )
 

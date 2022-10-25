@@ -1,3 +1,24 @@
+// (The MIT License)
+
+// Copyright (c) 2012-2013 Jared Hanson
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy of
+// this software and associated documentation files (the "Software"), to deal in
+// the Software without restriction, including without limitation the rights to
+// use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+// the Software, and to permit persons to whom the Software is furnished to do so,
+// subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+// IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 /**
  * Ensure that a user is logged in before proceeding to next route middleware.
  *
@@ -29,7 +50,7 @@
  *
  */
 
-module.exports = function checkUserAuth(options) {
+module.exports = function authGuard(options) {
   if (typeof options == 'string') {
     options = { redirectTo: options }
   }
@@ -48,38 +69,17 @@ module.exports = function checkUserAuth(options) {
       }
       return res.redirect(url)
     }
-    console.log('req.user.authGroup', req.user)
+
     // check user permissions
     switch (groupPermissionLevel) {
       case 'admin':
         if (req.user.authGroup !== 'admin')
           return res.status(403).send('Unauthorized')
-      case 'eng':
-        if (req.user.authGroup !== 'admin' && req.user.authGroup !== 'eng')
+      case 'operator':
+        if (req.user.authGroup !== 'admin' && req.user.authGroup !== 'operator')
           return res.status(403).send('Unauthorized')
       default:
         next()
     }
   }
 }
-
-// (The MIT License)
-
-// Copyright (c) 2012-2013 Jared Hanson
-
-// Permission is hereby granted, free of charge, to any person obtaining a copy of
-// this software and associated documentation files (the "Software"), to deal in
-// the Software without restriction, including without limitation the rights to
-// use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-// the Software, and to permit persons to whom the Software is furnished to do so,
-// subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-// IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -6,12 +6,11 @@ var express = require('express')
 var router = express.Router()
 var fs = require('fs')
 var template_render = require('../core/render-template.js')
-var authorize = require('../core/authorize.js')
-var checkUserAuth = require('../core/checkUserAuth.js')
+var authGuard = require('../core/authGuard.js')
 
-var checkUser = checkUserAuth({ groupPermissionLevel: 'admin' })
+var authCheck = authGuard({ groupPermissionLevel: 'admin' })
 
-router.get('/', checkUser, authorize.auth, function (req, res, next) {
+router.get('/', authCheck, function (req, res, next) {
   glass_settings_template = template_render.get_template('glass_alerts')
 
   var json_file = require('jsonfile')

@@ -4,19 +4,16 @@
 
 var express = require('express')
 var router = express.Router()
-var authorize = require('../core/authorize.js')
-var checkUserAuth = require('../core/checkUserAuth.js')
+var authGuard = require('../core/authGuard.js')
 
-var checkUser = checkUserAuth({ groupPermissionLevel: 'admin' })
+var authCheck = authGuard({ groupPermissionLevel: 'admin' })
 
-router.post('/', checkUser, authorize.auth, function (req, res, next) {
+router.post('/', authCheck, function (req, res, next) {
   var request = req.body
   var json_file = require('jsonfile')
 
   var glass_config = json_file.readFileSync('config/glass_config.json')
 
-  glass_config.admin_user = request.admin_user
-  glass_config.admin_password = request.admin_password
   glass_config.leases_file = request.leases_file
   glass_config.log_file = request.log_file
   glass_config.config_file = request.config_file
