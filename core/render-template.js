@@ -10,10 +10,7 @@ module.exports = {
       return body_content
     } else {
       core = fs.readFileSync('./public/templates/index.html', 'utf8')
-      core = core.replace(
-        /\[application_name\]/,
-        'FiberGlass | ISC DHCP Server Interface'
-      )
+      core = core.replace(/\[application_name\]/, 'FiberGlass | DHCP')
       core = core.replace(/\[body_content\]/, body_content)
       // core = core.replace(/\[(.*?)\]/, "");
       return core

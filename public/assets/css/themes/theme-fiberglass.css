@@ -1,0 +1,50 @@
+.theme-fiberglass .navbar {
+    background-color: #5b616ac3; }
+
+    .theme-fiberglass .navbar .navbar-logo {
+      width: 20rem;
+    }
+  
+  .theme-fiberglass .navbar-brand {
+    font-size: x-large;
+    color: #fff; }
+    .theme-fiberglass .navbar-brand:hover {
+      color: #fff; }
+    .theme-fiberglass .navbar-brand:active {
+      color: #fff; }
+    .theme-fiberglass .navbar-brand:focus {
+      color: #fff; }
+  
+  .theme-fiberglass .nav > li > a {
+    color: #fff; }
+    .theme-fiberglass .nav > li > a:hover {
+      background-color: transparent; }
+    .theme-fiberglass .nav > li > a:focus {
+      background-color: transparent; }
+  
+  .theme-fiberglass .nav .open > a {
+    background-color: transparent; }
+    .theme-fiberglass .nav .open > a:hover {
+      background-color: transparent; }
+    .theme-fiberglass .nav .open > a:focus {
+      background-color: transparent; }
+  
+  .theme-fiberglass .bars {
+    color: #fff; }
+  
+  .theme-fiberglass .sidebar .menu .list li.active {
+    background-color: transparent; }
+    .theme-fiberglass .sidebar .menu .list li.active > :first-child i, .theme-fiberglass .sidebar .menu .list li.active > :first-child span {
+      color: #5B616A; }
+  
+  .theme-fiberglass .sidebar .menu .list .toggled {
+    background-color: transparent; }
+  
+  .theme-fiberglass .sidebar .menu .list .ml-menu {
+    background-color: transparent; }
+  
+  .theme-fiberglass .sidebar .legal {
+    background-color: #fff; }
+    .theme-fiberglass .sidebar .legal .copyright a {
+      color: #5B616A !important; }
+  
