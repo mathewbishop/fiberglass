@@ -1,11 +1,11 @@
 var express = require('express')
 var router = express.Router()
-var ensureLogIn = require('connect-ensure-login').ensureLoggedIn
+var authGuard = require('../core/authGuard.js')
 
-var ensureLoggedIn = ensureLogIn()
+var authCheck = authGuard({ groupPermissionLevel: 'admin' })
 
 /* GET users listing. */
-router.get('/', ensureLoggedIn, function (req, res, next) {
+router.get('/', authCheck, function (req, res, next) {
   res.send('respond with a resource')
 })
 

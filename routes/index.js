@@ -2,12 +2,12 @@ var express = require('express')
 var router = express.Router()
 var fs = require('fs')
 var template_render = require('../core/render-template.js')
-var ensureLogIn = require('connect-ensure-login').ensureLoggedIn
+var authGuard = require('../core/authGuard.js')
 
-var ensureLoggedIn = ensureLogIn()
+var authCheck = authGuard()
 
 /* GET home page. */
-router.get('/', ensureLoggedIn, function (req, res, next) {
+router.get('/', authCheck, function (req, res, next) {
   console.log(req.url)
 
   counters = template_render.get_template('counters')

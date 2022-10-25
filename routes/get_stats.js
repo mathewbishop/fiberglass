@@ -1,10 +1,10 @@
 var express = require('express')
 var router = express.Router()
-var ensureLogIn = require('connect-ensure-login').ensureLoggedIn
+var authGuard = require('../core/authGuard.js')
 
-var ensureLoggedIn = ensureLogIn()
+var authCheck = authGuard()
 
-router.get('/', ensureLoggedIn, function (req, res, next) {
+router.get('/', authCheck, function (req, res, next) {
   var json_file = require('jsonfile')
   var glass_config = json_file.readFileSync('config/glass_config.json')
 

@@ -6,6 +6,9 @@ var readlineSync = require('readline-sync')
 
 var username = readlineSync.question('Username: ')
 var password = readlineSync.question('Password: ')
+var authGroup = readlineSync.question(
+  'Auth Group (admin, operator, or default): '
+)
 
 db.serialize(function () {
   // create the database schema for the todos app
@@ -13,6 +16,7 @@ db.serialize(function () {
     'CREATE TABLE IF NOT EXISTS users ( \
           id INTEGER PRIMARY KEY, \
           username TEXT UNIQUE, \
+          auth_group TEXT, \
           hashed_password BLOB, \
           salt BLOB \
         )'
@@ -20,8 +24,13 @@ db.serialize(function () {
 
   var salt = crypto.randomBytes(16)
   db.run(
-    'INSERT OR IGNORE INTO users (username, hashed_password, salt) VALUES (?, ?, ?)',
-    [username, crypto.pbkdf2Sync(password, salt, 310000, 32, 'sha256'), salt]
+    'INSERT OR IGNORE INTO users (username, auth_group, hashed_password, salt) VALUES (?, ?, ?, ?)',
+    [
+      username,
+      authGroup,
+      crypto.pbkdf2Sync(password, salt, 310000, 32, 'sha256'),
+      salt,
+    ]
   )
 })
 

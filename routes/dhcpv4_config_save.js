@@ -4,12 +4,11 @@
 
 var express = require('express')
 var router = express.Router()
-var authorize = require('../core/authorize.js')
-var ensureLogIn = require('connect-ensure-login').ensureLoggedIn
+var authGuard = require('../core/authGuard.js')
 
-var ensureLoggedIn = ensureLogIn()
+var authCheck = authGuard({ groupPermissionLevel: 'operator' })
 
-router.post('/', ensureLoggedIn, authorize.auth, function (req, res, next) {
+router.post('/', authCheck, function (req, res, next) {
   var request = req.body
 
   var fs = require('fs')

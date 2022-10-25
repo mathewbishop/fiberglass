@@ -1,6 +1,6 @@
-# Fiberglass
+# FiberGlass
 
-`Fiberglass` is a modification of Chris Miles' (chris.miles.e@gmail.com) Glass (glass-isc-dhcp) web UI for ISC DHCP that includes user authentication.
+`FiberGlass` is a modification of Chris Miles' (chris.miles.e@gmail.com) Glass (glass-isc-dhcp) web UI for ISC DHCP that includes user authentication.
 
 # Overview
 
@@ -16,7 +16,7 @@
 
 - `isc-dhcp-server` is installed installed => `apt install isc-dhcp-server`
 
-### To install and use `Fiberglass`:
+### To install and use `FiberGlass`:
 
 **1. Follow the normal install instructions and process outlined in the local [README](./README.md#installation), but clone _this_ repo instead of the orignial**
 

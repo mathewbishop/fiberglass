@@ -1,12 +1,11 @@
 var express = require('express')
 var router = express.Router()
 var template_render = require('../core/render-template.js')
-var authorize = require('../core/authorize.js')
-var ensureLogIn = require('connect-ensure-login').ensureLoggedIn
+var authGuard = require('../core/authGuard.js')
 
-var ensureLoggedIn = ensureLogIn()
+var authCheck = authGuard({ groupPermissionLevel: 'operator' })
 
-router.get('/', ensureLoggedIn, authorize.auth, function (req, res, next) {
+router.get('/', authCheck, function (req, res, next) {
   var content = ''
 
   content = template_render.get_template('dhcp_start_stop_restart')
@@ -55,7 +54,7 @@ router.get('/', ensureLoggedIn, authorize.auth, function (req, res, next) {
   })
 })
 
-router.post('/', authorize.auth, function (req, res, next) {
+router.post('/', function (req, res, next) {
   var request = req.body
   const execSync = require('child_process').execSync
 
