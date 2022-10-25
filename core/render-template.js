@@ -12,7 +12,6 @@ module.exports = {
       return body_content
     } else {
       core = fs.readFileSync('./public/templates/index.html', 'utf8')
-      core = core.replace(/\[application_name\]/, glass_config.app_name)
       core = core.replace(/\[header_title\]/, glass_config.header_title)
       core = core.replace(/\[body_content\]/, body_content)
       // core = core.replace(/\[(.*?)\]/, "");

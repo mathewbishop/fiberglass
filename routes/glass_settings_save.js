@@ -17,6 +17,8 @@ router.post('/', authCheck, function (req, res, next) {
   glass_config.leases_file = request.leases_file
   glass_config.log_file = request.log_file
   glass_config.config_file = request.config_file
+  glass_config.v4_config_file = request.v4_config_file
+  glass_config.header_title = request.header_title
 
   json_file.writeFile(
     './config/glass_config.json',

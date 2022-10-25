@@ -15,6 +15,5 @@
   "email_alert_to": "",
   "sms_alert_to": "",
   "ws_port": 8080,
-  "header_title": "ISC DHCP Server Interface",
-  "app_name": "FiberGlass | DHCP"
+  "header_title": "ISC DHCP Server Interface"
 }
