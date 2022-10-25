@@ -5,11 +5,11 @@
 var express = require('express')
 var router = express.Router()
 var authorize = require('../core/authorize.js')
-var ensureLogIn = require('connect-ensure-login').ensureLoggedIn
+var checkUserAuth = require('../core/checkUserAuth.js')
 
-var ensureLoggedIn = ensureLogIn()
+var checkUser = checkUserAuth({ groupPermissionLevel: 'admin' })
 
-router.post('/', ensureLoggedIn, authorize.auth, function (req, res, next) {
+router.post('/', checkUser, authorize.auth, function (req, res, next) {
   var request = req.body
   var json_file = require('jsonfile')
   var glass_config = json_file.readFileSync('config/glass_config.json')

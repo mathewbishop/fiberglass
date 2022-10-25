@@ -26,40 +26,44 @@
  *     app.get('/profile',
  *       ensureLoggedIn({ redirectTo: '/session/new', setReturnTo: false }),
  *       function(req, res) { ... });
- * 
+ *
  */
- 
+
 module.exports = function checkUserAuth(options) {
   if (typeof options == 'string') {
     options = { redirectTo: options }
   }
-  options = options || {};
-  
-  var url = options.redirectTo || '/login';
-  var setReturnTo = (options.setReturnTo === undefined) ? true : options.setReturnTo;
+  options = options || {}
 
-  var authGroupLevel = options.authGroupLevel || false
-  
-  return function(req, res, next) {
+  var url = options.redirectTo || '/login'
+  var setReturnTo =
+    options.setReturnTo === undefined ? true : options.setReturnTo
+
+  var groupPermissionLevel = options.groupPermissionLevel || false
+
+  console.log('groupPermissionLevel', groupPermissionLevel)
+
+  return function (req, res, next) {
     if (!req.isAuthenticated || !req.isAuthenticated()) {
       if (setReturnTo && req.session) {
-        req.session.returnTo = req.originalUrl || req.url;
+        req.session.returnTo = req.originalUrl || req.url
       }
-      return res.redirect(url);
+      return res.redirect(url)
     }
-    
+    console.log('req.user.authGroup', req.user)
     // check user permissions
-    
-
-
-    if (permissionLevel && !permissionLevel === req.user.authGroup) {
-      return res.redirect(url);
+    switch (groupPermissionLevel) {
+      case 'admin':
+        if (req.user.authGroup !== 'admin')
+          return res.status(403).send('Unauthorized')
+      case 'eng':
+        if (req.user.authGroup !== 'admin' && req.user.authGroup !== 'eng')
+          return res.status(403).send('Unauthorized')
+      default:
+        next()
     }
-
-    next();
   }
 }
-
 
 // (The MIT License)
 

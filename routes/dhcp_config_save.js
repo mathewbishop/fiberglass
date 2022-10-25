@@ -7,7 +7,7 @@ var router = express.Router()
 var authorize = require('../core/authorize.js')
 var checkUserAuth = require('../core/checkUserAuth.js')
 
-var checkUser = checkUserAuth()
+var checkUser = checkUserAuth({ groupPermissionLevel: 'eng' })
 
 router.post('/', checkUser, authorize.auth, function (req, res, next) {
   var request = req.body

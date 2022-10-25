@@ -7,7 +7,7 @@ var fs = require('fs')
 var template_render = require('../core/render-template.js')
 var checkUserAuth = require('../core/checkUserAuth.js')
 
-var checkUser = checkUserAuth()
+var checkUser = checkUserAuth({ groupPermissionLevel: 'admin' })
 
 router.get('/', checkUser, function (req, res, next) {
   api_template = template_render.get_template('api_examples')

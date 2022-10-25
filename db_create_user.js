@@ -6,7 +6,7 @@ var readlineSync = require('readline-sync')
 
 var username = readlineSync.question('Username: ')
 var password = readlineSync.question('Password: ')
-var authGroup = readlineSync.question('Auth Group (admin, eng, ops): ')
+var authGroup = readlineSync.question('Auth Group (admin, eng, default): ')
 
 db.serialize(function () {
   // create the database schema for the todos app

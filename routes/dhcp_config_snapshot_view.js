@@ -3,11 +3,11 @@ var router = express.Router()
 var fs = require('fs')
 var template_render = require('../core/render-template.js')
 var authorize = require('../core/authorize.js')
-var ensureLogIn = require('connect-ensure-login').ensureLoggedIn
+var checkUserAuth = require('../core/checkUserAuth.js')
 
-var ensureLoggedIn = ensureLogIn()
+var checkUser = checkUserAuth({ groupPermissionLevel: 'admin' })
 
-router.post('/', ensureLoggedIn, authorize.auth, function (req, res, next) {
+router.post('/', checkUser, authorize.auth, function (req, res, next) {
   var request = req.body
   res.send(fs.readFileSync('./config_backups/' + request.snapshot, 'utf8'))
 })
