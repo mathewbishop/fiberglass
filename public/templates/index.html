@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Glass | ISC DHCP Server Interface</title>
+    <title>FiberGlass | DHCP</title>
     <!-- Favicon-->
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
@@ -109,20 +109,20 @@
                         </a>
                     </li>
 
-                    <li class="header">Operation</li>
-                    <li>
+                    <li class="header eng">Operation</li>
+                    <li class="eng">
                         <a href="/dhcpv4_config" pjax="1">
                             <i class="material-icons">mode_edit</i>
                             <span>DHCPv4 Pools</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="eng">
                         <a href="/dhcpv6_config" pjax="1">
                             <i class="material-icons">mode_edit</i>
                             <span>DHCPv6 Pools</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="eng">
                         <a href="/dhcp_start_stop_restart" pjax="1">
                             <i class="material-icons">refresh</i>
                             <span>Start / Stop / Restart</span>
@@ -130,32 +130,32 @@
                     </li>
 
 
-                    <li class="header">Admin</li>
-                    <li>
+                    <li class="header admin">Admin</li>
+                    <li class="admin">
                         <a href="/dhcp_config" pjax="1">
                             <i class="material-icons">mode_edit</i>
                             <span>DHCP Config</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="admin">
                         <a href="/dhcp_config_snapshots" pjax="1">
                             <i class="material-icons">cloud_download</i>
                             <span>DHCP Config Snapshots</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="admin">
                         <a href="/glass_settings" pjax="1">
                             <i class="material-icons">settings</i>
                             <span>Glass Settings</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="admin">
                         <a href="/glass_alerts" pjax="1">
                             <i class="material-icons">add_alert</i>
                             <span>Glass Alerts</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="admin">
                         <a href="/api_examples" pjax="1">
                             <i class="material-icons">widgets</i>
                             <span>API Examples</span>
@@ -254,6 +254,18 @@
 
     <script type="text/javascript">
 
+        function user_check() {
+            $.get("/api/get_current_user/", function(data) {
+                if (data.authGroup !== 'admin') {
+                    $(".admin").hide()
+                }
+                if (data.authGroup !== 'eng' && data.authGroup !== 'admin') {
+                    $(".admin").hide()
+                    $(".eng").hide()
+                }
+            })
+        }
+
         function get_stats() {
             $.get("/get_stats", function (data) {
                 $('#cpu-utilization').html(data.cpu_utilization + "%");
@@ -332,6 +344,9 @@
                 if (activeItemOffsetTop > 150) $el.slimscroll({ scrollTo: activeItemOffsetTop + 'px' });
             }
         }
+
+        // get the current user and show/hide nav based on authGroup
+        user_check()
 
     </script>
 

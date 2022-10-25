@@ -54,6 +54,7 @@ if (glass_config.ip_ranges_to_allow[0] !== '') {
  * Normal web routes
  */
 app.use('/login', require('./routes/auth'))
+app.use('/login/password', require('./routes/auth'))
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
 app.use('/get_stats', require('./routes/get_stats'))
@@ -85,7 +86,7 @@ app.use('/glass_settings_save', require('./routes/glass_settings_save'))
 /**
  * API Routes
  */
-app.use('/login/password', require('./routes/auth'))
+app.use('/api/get_current_user/', require('./api/get_current_user'))
 app.use('/api/get_active_leases/', require('./api/get_active_leases'))
 app.use('/api/get_subnet_details/', require('./api/get_subnet_details'))
 app.use('/api/get_vendor_count/', require('./api/get_vendor_count'))

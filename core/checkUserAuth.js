@@ -41,8 +41,6 @@ module.exports = function checkUserAuth(options) {
 
   var groupPermissionLevel = options.groupPermissionLevel || false
 
-  console.log('groupPermissionLevel', groupPermissionLevel)
-
   return function (req, res, next) {
     if (!req.isAuthenticated || !req.isAuthenticated()) {
       if (setReturnTo && req.session) {
