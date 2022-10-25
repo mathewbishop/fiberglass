@@ -94,9 +94,9 @@
   -webkit-transform: scale(1);
   transform: scale(1); }
 
-.navbar-header {
-  /* padding: 10px 7px;  */
-}
+/* .navbar-header {
+  padding: 10px 7px; 
+} */
   .navbar-header .bars {
     float: left;
     text-decoration: none; }
@@ -6733,9 +6733,9 @@ fieldset[disabled] .form-control {
   -webkit-transform: scale(1);
   transform: scale(1); }
 
-.navbar-header {
-  /* padding: 10px 7px;  */
-}
+/* .navbar-header {
+  padding: 10px 7px; 
+} */
   .navbar-header .bars {
     float: left;
     text-decoration: none; }
