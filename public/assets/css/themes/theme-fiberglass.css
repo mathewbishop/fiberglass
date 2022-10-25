@@ -1,9 +1,9 @@
 .theme-fiberglass .navbar {
-    background-color: #5b616ac3; }
+    background-color: #e88121; }
 
-    .theme-fiberglass .navbar .navbar-logo {
+    /* .theme-fiberglass .navbar .navbar-logo {
       width: 20rem;
-    }
+    } */
   
   .theme-fiberglass .navbar-brand {
     font-size: x-large;
@@ -35,7 +35,7 @@
   .theme-fiberglass .sidebar .menu .list li.active {
     background-color: transparent; }
     .theme-fiberglass .sidebar .menu .list li.active > :first-child i, .theme-fiberglass .sidebar .menu .list li.active > :first-child span {
-      color: #5B616A; }
+      color: #e88121; }
   
   .theme-fiberglass .sidebar .menu .list .toggled {
     background-color: transparent; }
@@ -46,5 +46,10 @@
   .theme-fiberglass .sidebar .legal {
     background-color: #fff; }
     .theme-fiberglass .sidebar .legal .copyright a {
-      color: #5B616A !important; }
+      color: #e88121 !important; }
   
+/* Override style.css */
+.sidebar .user-info {
+  height: 100px;
+  border-bottom: 2px solid black;
+}
