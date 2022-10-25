@@ -1,9 +1,5 @@
 .theme-fiberglass .navbar {
-    background-color: #e88121; }
-
-    /* .theme-fiberglass .navbar .navbar-logo {
-      width: 20rem;
-    } */
+    background-color: #393431; }
   
   .theme-fiberglass .navbar-brand {
     font-size: x-large;
@@ -48,8 +44,14 @@
     .theme-fiberglass .sidebar .legal .copyright a {
       color: #e88121 !important; }
   
-/* Override style.css */
+/* Override style.css; fiberglass logo placement */
 .sidebar .user-info {
   height: 100px;
   border-bottom: 2px solid black;
+}
+
+.navbar .container-fluid {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;
 }
