@@ -1,6 +1,6 @@
 var express = require('express')
 var router = express.Router()
-var authGuard = require('../core/authGuard.js')
+var authGuard = require('../core/auth-guard.js')
 
 var authCheck = authGuard({ groupPermissionLevel: 'admin' })
 

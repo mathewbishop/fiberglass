@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>FiberGlass | DHCP</title>
     <!-- Favicon-->
-    <link rel="icon" href="../images/fiberglass_logo4_transparent1.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
@@ -33,7 +33,7 @@
     <link href="assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="assets/css/themes/theme-fiberglass.css?v=1" rel="stylesheet" />
+    <link href="assets/css/themes/theme-fiberglass.css" rel="stylesheet" />
 </head>
 
 <body class="theme-fiberglass">
@@ -72,12 +72,7 @@
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
-            <div class="user-info"
-                style="background: url('images/fiberglass_logo4_with_text_transparent1.png'); background-size: contain; background-repeat: no-repeat; background-color: #e9e9e9;">
-                <!-- <div class="image">
-                    <img src="images/fiberglass_logo.png" width="250" height="75" alt="User">
-                </div> -->
-            </div>
+            <div class="user-info"></div>
 
             <!-- Menu -->
             <div class="menu">
@@ -301,8 +296,6 @@
             });
         }
 
-        change_favicon("images/glass_logo.png");
-
         var get_stats_timer = setInterval(function () {
             if (window_focus && $('#total-leases').length) {
                 get_stats();
@@ -345,8 +338,22 @@
             }
         }
 
+        function custom_app_settings() {
+            $.get("/api/get_glass_config/", function(data) {
+                if (data.logo_file) {
+                    $(".user-info").css("background-image", `url(${data.logo_file})`)
+                }
+                if (data.logo_background_color) {
+                    $(".user-info").css("background-color", `${data.logo_background_color}`)
+                }
+            })    
+        }
+
         // get the current user and show/hide nav based on authGroup
         user_check()
+
+        // check for and apply custom app settings such as styles, logo changes, etc
+        custom_app_settings()
 
     </script>
 

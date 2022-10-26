@@ -4,7 +4,7 @@
 
 var express = require('express')
 var router = express.Router()
-var authGuard = require('../core/authGuard.js')
+var authGuard = require('../core/auth-guard.js')
 
 var authCheck = authGuard({ groupPermissionLevel: 'admin' })
 
@@ -19,6 +19,8 @@ router.post('/', authCheck, function (req, res, next) {
   glass_config.config_file = request.config_file
   glass_config.v4_config_file = request.v4_config_file
   glass_config.header_title = request.header_title
+  glass_config.logo_file = request.logo_file
+  glass_config.logo_background_color = request.logo_background_color
 
   json_file.writeFile(
     './config/glass_config.json',
