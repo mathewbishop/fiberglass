@@ -207,8 +207,8 @@ service apparmor restart
 
 <pre>
 {
-  ~~"admin_user": "glassadmin"~~,
-  ~~"admin_password": "glassadmin"~~,
+  "admin_user": "glassadmin",
+  "admin_password": "glassadmin",
   "leases_file": "/var/lib/dhcp/dhcpd.leases",
   "log_file": "/var/log/dhcp.log",
   "config_file": "/etc/dhcp/dhcpd.conf",

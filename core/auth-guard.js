@@ -1,6 +1,7 @@
 // (The MIT License)
 
 // Copyright (c) 2012-2013 Jared Hanson
+// Copyright (c) 2022 Matt Bishop
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -18,6 +19,11 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+//==========================================
+// Attribution Notice
+//==========================================
+// This program is heavily derived from a function written by Jared Hanson (see License above), as part of an npm package called "connect-ensure-login" (https://www.npmjs.com/package/connect-ensure-login)
 
 /**
  * Ensure that a user is logged in before proceeding to next route middleware.
