@@ -33,7 +33,7 @@
     <link href="assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="assets/css/themes/theme-fiberglass.css?v=1" rel="stylesheet" />
+    <link href="assets/css/themes/theme-fiberglass.css" rel="stylesheet" />
 </head>
 
 <body class="theme-fiberglass">
@@ -66,22 +66,13 @@
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="/">[header_title]</a>
             </div>
-            <div class="navbar-logos hidden">
-                <img src="" alt="logo" style="max-width: 50px;" id="navbar-logo-one">
-                <img src="" alt="logo" style="max-width: 50px;" id="navbar-logo-two">
-            </div>
         </div>
     </nav>
     <!-- #Top Bar -->
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
-            <div class="user-info"
-                style="background: url('images/fiberglass_logo4_with_text_transparent1.png'); background-size: contain; background-repeat: no-repeat; background-color: #B5B5B5;">
-                <!-- <div class="image">
-                    <img src="" width="250" height="75" alt="User">
-                </div> -->
-            </div>
+            <div class="user-info"></div>
 
             <!-- Menu -->
             <div class="menu">
@@ -347,8 +338,22 @@
             }
         }
 
+        function custom_app_settings() {
+            $.get("/api/get_glass_config/", function(data) {
+                if (data.logo_file) {
+                    $(".user-info").css("background-image", `url(${data.logo_file})`)
+                }
+                if (data.logo_background_color) {
+                    $(".user-info").css("background-color", `${data.logo_background_color}`)
+                }
+            })    
+        }
+
         // get the current user and show/hide nav based on authGroup
         user_check()
+
+        // check for and apply custom app settings such as styles, logo changes, etc
+        custom_app_settings()
 
     </script>
 

@@ -49,9 +49,3 @@
   height: 100px;
   border-bottom: 2px solid black;
 }
-
-.navbar .container-fluid {
-  display: flex;
-  align-items: center; 
-  justify-content: space-between;
-}

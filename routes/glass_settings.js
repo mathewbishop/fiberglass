@@ -6,7 +6,7 @@ var express = require('express')
 var router = express.Router()
 var fs = require('fs')
 var template_render = require('../core/render-template.js')
-var authGuard = require('../core/authGuard.js')
+var authGuard = require('../core/auth-guard.js')
 
 var authCheck = authGuard({ groupPermissionLevel: 'admin' })
 
@@ -73,6 +73,26 @@ router.get('/', authCheck, function (req, res, next) {
       'Header Title (requires application restart)',
       '<input type="input" class="form-control" id="header_title" placeholder="ISC DHCP Server Interface" value="' +
         glass_config.header_title +
+        '">'
+    )
+
+  /* Logo File */
+  input =
+    input +
+    template_render.form_input(
+      'Logo File',
+      '<input type="input" class="form-control" id="logo_file" placeholder="/path/to/file" value="' +
+        glass_config.logo_file +
+        '">'
+    )
+
+  /* Logo Background Color */
+  input =
+    input +
+    template_render.form_input(
+      'Logo Background Color (hex, keyword, etc)',
+      '<input type="input" class="form-control" id="logo_background_color" placeholder="blue, #e88121, etc" value="' +
+        glass_config.logo_background_color +
         '">'
     )
 
