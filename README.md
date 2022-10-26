@@ -3,7 +3,7 @@
 
 ![fiberglass logo](./public/images/fiberglass_logo4_with_text_transparent1.png)
 
-`FiberGlass` is a fork of Chris Miles' (chris.miles.e@gmail.com) Glass (glass-isc-dhcp) web UI for ISC DHCP that includes user authentication, user group authorization, additional configuration options and changes, and more.
+`FiberGlass` is a fork of Chris Miles' (chris.miles.e@gmail.com) [Glass](https://github.com/Akkadius/glass-isc-dhcp) web UI for ISC DHCP that includes user authentication, user group authorization, additional configuration options and changes, and more.
 
 # Features
 
@@ -39,7 +39,7 @@ Make sure the DHCP server is installed
 
 ## Install `sqlite3` (optional)
 
-You may want to install `sqlite3` on the system to have a way of managing the user and session databases outside the application. These databases are SQLite databases located in the application directory under `.db`.
+You may want to install `sqlite3` on the system to have a way of managing the user and session SQLite databases outside the application.
 
 `apt install sqlite3`
 
@@ -47,8 +47,8 @@ You may want to install `sqlite3` on the system to have a way of managing the us
 
 ```
 cd /opt
-git clone https://github.com/mathewbishop/glass-isc-dhcp
-cd glass-isc-dhcp
+git clone https://github.com/mathewbishop/fiberglass.git
+cd fiberglass
 mkdir logs
 chmod u+x ./bin/ -R
 chmod u+x *.sh
@@ -78,7 +78,7 @@ Inside the `config` directory is a file named `glass_config.example.json` with a
 - For Debian this is all that is needed and FiberGlass should start immediately, you can browse via http://server-ip:3000
 - For Ubuntu users (or any system running `Apparmor`) - you will have additional Apparmor config to add
 - **Recommended** to iptables port 3000 to close off FiberGlass if you are facing the public on your server
-- **Recommended** to keep FiberGlass up through reboots, see [Glass Process Keepalive](#glass-process-keepalive) _or create a `systemd` service for FiberGlass_
+- **Recommended** to keep FiberGlass up through reboots, see [Glass Process Keepalive](./README.original.glass.md#glass-process-keepalive) _or create a `systemd` service for FiberGlass. NOTE: if you use the Glass Process Keepalive method, replace the `/opt/glass-isc-dhcp` directory with `/opt/fiberglass`, or whatever you've named the application directory._
 
 ## Apparmor
 
@@ -86,7 +86,7 @@ Inside the `config` directory is a file named `glass_config.example.json` with a
 
 ```
 sed -i '/\/etc\/dhcp\/\*\*/a\ \ \/var\/lib\/dhcp\/\*\* lrw,' /etc/apparmor.d/usr.sbin.dhcpd
-sed -i '/\/etc\/dhcp\/\*\*/a\ \ \/opt\/glass-isc-dhcp\/\*\* lrw,' /etc/apparmor.d/usr.sbin.dhcpd
+sed -i '/\/etc\/dhcp\/\*\*/a\ \ \/opt\/fiberglass\/\*\* lrw,' /etc/apparmor.d/usr.sbin.dhcpd
 service apparmor restart
 ```
 
