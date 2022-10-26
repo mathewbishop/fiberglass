@@ -31,13 +31,13 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
-## Install isc-dhcp-server
+## Install `isc-dhcp-server`
 
 Make sure the DHCP server is installed
 
 `apt install isc-dhcp-server`
 
-## Install sqlite3 (optional)
+## Install `sqlite3` (optional)
 
 You may want to install `sqlite3` on the system to have a way of managing the user and session databases outside the application. These databases are SQLite databases located in the application directory under `.db`.
 
