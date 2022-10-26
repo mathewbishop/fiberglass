@@ -1,0 +1,21 @@
+{
+  "leases_file": "/var/lib/dhcp/dhcpd.leases",
+  "log_file": "/var/log/dhcp.log",
+  "config_file": "/etc/dhcp/dhcpd.conf",
+  "v4_config_file": "/etc/dhcp/dhcp.d/dhcp4.nets",
+  "v6_config_file": "/etc/dhcp/dhcp.d/dhcp6.nets",
+  "shared_network_critical_threshold": "95",
+  "shared_network_warning_threshold": "0",
+  "slack_webhook_url": "",
+  "slack_alert_channel": "",
+  "leases_per_minute_threshold": "50",
+  "ip_ranges_to_allow": [
+    ""
+  ],
+  "email_alert_to": "",
+  "sms_alert_to": "",
+  "ws_port": 8080,
+  "header_title": "ISC DHCP Server Interface",
+  "logo_file": "",
+  "logo_background_color": ""
+}
