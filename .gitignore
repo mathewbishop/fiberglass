@@ -62,5 +62,6 @@ typings/
 # dotenv environment variables file
 .env
 
-# ignore database
+# FiberGlass Application
 .db
+glass_config.json
