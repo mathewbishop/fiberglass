@@ -15,9 +15,10 @@ router.post('/', authCheck, function (req, res, next) {
   var glass_config = json_file.readFileSync('config/glass_config.json')
 
   glass_config.leases_file = request.leases_file
-  glass_config.log_file = request.log_file
   glass_config.config_file = request.config_file
   glass_config.v4_config_file = request.v4_config_file
+  glass_config.v6_config_file = request.v6_config_file
+  glass_config.log_file = request.log_file
   glass_config.header_title = request.header_title
   glass_config.logo_file = request.logo_file
   glass_config.logo_background_color = request.logo_background_color
