@@ -6,7 +6,6 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "always-tail": "~0.2.0",
     "always-tail2": "~1.0.0",
     "body-parser": "~1.20.1",
     "connect-ensure-login": "0.1.1",
