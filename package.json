@@ -23,7 +23,6 @@
     "passport": "~0.6.0",
     "passport-local": "~1.0.0",
     "readline-sync": "~1.4.10",
-    "serve-favicon": "~2.5.0",
     "slack-node": "~0.1.8",
     "sqlite3": "~5.1.2",
     "ws": "~7.5.3"
