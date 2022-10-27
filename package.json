@@ -19,7 +19,6 @@
     "express-session": "~1.17.3",
     "forever": "~4.0.3",
     "humanize": "0.0.9",
-    "jade": "~1.11.0",
     "jsonfile": "~6.1.0",
     "lodash": "~4.17.10",
     "morgan": "~1.10.0",
