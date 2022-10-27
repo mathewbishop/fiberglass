@@ -20,15 +20,37 @@ FiberGlass adds the following features:
 
 # Installation
 
-Only Debian-based distros are currently supported/tested/used. FiberGlass _may_ work on other distros, but we have not tried, and the instructions here only cover Debian-based systems.
+Only Debian-based distros are currently supported/tested/used. FiberGlass _may_ work on other distros, but we have not tried and the instructions here only cover Debian-based systems.
 
 _NOTE: some of these instructions are copied from the [original README](./README.original.glass.md#installation)._
 
 ## Install NodeJS (If not installed)
 
+FiberGlass runs on the following Node.js major versions:
+
+- lts/dubnium -> v10.24.1
+- lts/erbium -> v12.22.12
+- lts/fermium -> v14.20.1
+- lts/gallium -> v16.18.0
+
+**NOTE: _Node.js v18 and later may work, but have not yet been tested._**
+
+**_Node.js v8 and earlier are no longer supported._**
+
+<br/>
+
+**Ubuntu**
+
 ```
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt-get install -y nodejs
+```
+
+**Debian**
+
+```
+curl -fsSL https://deb.nodesource.com/setup_16.x | bash - &&\
+apt-get install -y nodejs
 ```
 
 ## Install `isc-dhcp-server`
