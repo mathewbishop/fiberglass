@@ -16,7 +16,6 @@ FiberGlass adds the following features:
 - Allow editing of more than one config file: for example, if you've broken out your IPv4 and IPv6 DHCP config files and are using them as _includes_ in your main `dhcp.conf`
 - Adds ability to control more settings through the admin UI in the application
 - Minor style and theme changes
-- IPv6 support
 
 # Installation
 
