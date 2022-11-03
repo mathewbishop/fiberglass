@@ -9,7 +9,7 @@ var authCheck = authGuard({ groupPermissionLevel: 'operator' })
 router.get('/', authCheck, function (req, res, next) {
   var content = ''
 
-  content = template_render.get_template('dhcpv4_config')
+  content = template_render.get_template('dhcpv6_pools')
 
   /* Read Config */
   var json_file = require('jsonfile')
@@ -18,20 +18,20 @@ router.get('/', authCheck, function (req, res, next) {
   content = template_render.set_template_variable(
     content,
     'title',
-    'DHCPv4 Config'
+    'DHCPv6 Config'
   )
   content = template_render.set_template_variable(content, 'c_content', '')
   content = template_render.set_template_variable(
     content,
-    'dhcpv4_config_location',
-    glass_config.v4_config_file
+    'dhcpv6_pools_location',
+    glass_config.v6_pools_file
   )
 
-  var dhcpv4_config = fs.readFileSync(glass_config.v4_config_file, 'utf8')
+  var dhcpv6_pools = fs.readFileSync(glass_config.v6_pools_file, 'utf8')
   content = template_render.set_template_variable(
     content,
-    'dhcpv4_config_content',
-    dhcpv4_config
+    'dhcpv6_pools_content',
+    dhcpv6_pools
   )
 
   res.send(template_render.get_index_template(content, req.url))
