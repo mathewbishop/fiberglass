@@ -24,10 +24,10 @@ router.get('/', authCheck, function (req, res, next) {
   content = template_render.set_template_variable(
     content,
     'dhcpv6_pools_location',
-    glass_config.v6_config_file
+    glass_config.v6_pools_file
   )
 
-  var dhcpv6_pools = fs.readFileSync(glass_config.v6_config_file, 'utf8')
+  var dhcpv6_pools = fs.readFileSync(glass_config.v6_pools_file, 'utf8')
   content = template_render.set_template_variable(
     content,
     'dhcpv6_pools_content',

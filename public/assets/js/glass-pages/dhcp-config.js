@@ -18,6 +18,20 @@ function save_dhcp_config() {
   })
 }
 
+function save_dhcp6_config() {
+  dhcp6_config_form_data = get_form_query_string('dhcp_config_form')
+  dhcp6_config_form_data =
+    dhcp6_config_form_data +
+    '&dhcp_config_data=' +
+    encodeURIComponent(dhcp_config.getValue())
+
+  console.log(dhcp6_config_form_data)
+
+  $.post('/dhcp6_config_save', dhcp6_config_form_data, function (data) {
+    $('#dhcp_config_result').html(data)
+  })
+}
+
 function save_dhcpv4_pools() {
   dhcpv4_pools_form_data = get_form_query_string('dhcp_config_form')
   dhcpv4_pools_form_data =

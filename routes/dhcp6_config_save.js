@@ -6,7 +6,7 @@ var express = require('express')
 var router = express.Router()
 var authGuard = require('../core/auth-guard.js')
 
-var authCheck = authGuard({ groupPermissionLevel: 'operator' })
+var authCheck = authGuard({ groupPermissionLevel: 'admin' })
 
 router.post('/', authCheck, function (req, res, next) {
   var request = req.body
@@ -41,7 +41,7 @@ router.post('/', authCheck, function (req, res, next) {
       } else {
         output = output.replace('\n', '<br>')
         res.send(
-          '<script type="text/javascript">modal (\'DHCPv6 Pools Save\', ' +
+          '<script type="text/javascript">modal (\'DHCPv6 Config Save\', ' +
             JSON.stringify('Syntax OK <br><br> Config Snapshot created') +
             ', "");'
         )
@@ -58,15 +58,15 @@ router.post('/', authCheck, function (req, res, next) {
         //date +"%Y-%m-%d_%H:%M:%S"
         exec(
           '/bin/cp ' +
-            glass_config.v6_pools_file +
+            glass_config.v6_config_file +
             ' ./config_backups/`basename ' +
-            glass_config.v6_pools_file +
+            glass_config.v6_config_file +
             '`_`date +"%Y-%m-%d_%H:%M:%S"`',
           function (err, stdout, stderr) {}
         )
 
         fs.writeFileSync(
-          glass_config.v6_pools_file,
+          glass_config.v6_config_file,
           request.dhcp_config_data,
           'utf8'
         )

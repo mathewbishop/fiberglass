@@ -26,13 +26,23 @@ router.get('/', authCheck, function (req, res, next) {
       '">'
   )
 
-  /* Main Config File */
+  /* Main v4 Config File */
   input =
     input +
     template_render.form_input(
-      'Main Config File',
+      'v4 Config File',
       '<input type="input" class="form-control" id="config_file" placeholder="/etc/dhcp/dhcpd.conf" value="' +
         glass_config.config_file +
+        '">'
+    )
+
+  /* Main v6 Config File */
+  input =
+    input +
+    template_render.form_input(
+      'v6 Config File',
+      '<input type="input" class="form-control" id="v6_config_file" placeholder="/etc/dhcp/dhcpd6.conf" value="' +
+        glass_config.v6_config_file +
         '">'
     )
 
@@ -40,9 +50,9 @@ router.get('/', authCheck, function (req, res, next) {
   input =
     input +
     template_render.form_input(
-      'v4 Pools Config File',
-      '<input type="input" class="form-control" id="v4_config_file" placeholder="/etc/dhcp/dhcp.d/dhcp4.nets" value="' +
-        glass_config.v4_config_file +
+      'v4 Pools File',
+      '<input type="input" class="form-control" id="v4_pools_file" placeholder="/etc/dhcp/dhcp.d/dhcp4.nets" value="' +
+        glass_config.v4_pools_file +
         '">'
     )
 
@@ -50,9 +60,9 @@ router.get('/', authCheck, function (req, res, next) {
   input =
     input +
     template_render.form_input(
-      'v6 Pools Config File',
-      '<input type="input" class="form-control" id="v6_config_file" placeholder="/etc/dhcp/dhcp.d/dhcp6.nets" value="' +
-        glass_config.v6_config_file +
+      'v6 Pools File',
+      '<input type="input" class="form-control" id="v6_pools_file" placeholder="/etc/dhcp/dhcp.d/dhcp6.nets" value="' +
+        glass_config.v6_pools_file +
         '">'
     )
 

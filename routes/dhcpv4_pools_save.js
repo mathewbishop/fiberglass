@@ -41,7 +41,7 @@ router.post('/', authCheck, function (req, res, next) {
       } else {
         output = output.replace('\n', '<br>')
         res.send(
-          '<script type="text/javascript">modal (\'DHCP Config Save\', ' +
+          '<script type="text/javascript">modal (\'DHCPv4 Pools Save\', ' +
             JSON.stringify('Syntax OK <br><br> Config Snapshot created') +
             ', "");'
         )
@@ -58,15 +58,15 @@ router.post('/', authCheck, function (req, res, next) {
         //date +"%Y-%m-%d_%H:%M:%S"
         exec(
           '/bin/cp ' +
-            glass_config.v4_config_file +
+            glass_config.v4_pools_file +
             ' ./config_backups/`basename ' +
-            glass_config.v4_config_file +
+            glass_config.v4_pools_file +
             '`_`date +"%Y-%m-%d_%H:%M:%S"`',
           function (err, stdout, stderr) {}
         )
 
         fs.writeFileSync(
-          glass_config.v4_config_file,
+          glass_config.v4_pools_file,
           request.dhcp_config_data,
           'utf8'
         )

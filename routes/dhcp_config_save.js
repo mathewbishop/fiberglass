@@ -41,7 +41,7 @@ router.post('/', authCheck, function (req, res, next) {
       } else {
         output = output.replace('\n', '<br>')
         res.send(
-          '<script type="text/javascript">modal (\'DHCP Config Save\', ' +
+          '<script type="text/javascript">modal (\'DHCPv4 Config Save\', ' +
             JSON.stringify('Syntax OK <br><br> Config Snapshot created') +
             ', "");'
         )
