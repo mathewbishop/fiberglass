@@ -18,7 +18,7 @@ router.post('/', authCheck, function (req, res, next) {
   var exec = require('child_process').exec
 
   exec(
-    '/usr/sbin/dhcpd -t -cf ./syntax_verify_config > verify_output 2> verify_output',
+    '/usr/sbin/dhcpd -6 -t -cf ./syntax_verify_config > verify_output 2> verify_output',
     function (err, stdout, stderr) {
       var output = fs.readFileSync('./verify_output', 'utf8')
 
