@@ -63,3 +63,6 @@ typings/
 .db
 glass_config.json
 config_backups
+
+# Dev
+development
