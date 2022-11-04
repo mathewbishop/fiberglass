@@ -62,6 +62,7 @@ app.use('/dhcp_statistics', require('./routes/dhcp_statistics_page'))
 app.use('/dhcp_leases', require('./routes/dhcp_leases'))
 app.use('/dhcp_lease_search', require('./routes/dhcp_lease_search'))
 app.use('/dhcp_log', require('./routes/dhcp_log'))
+app.use('/dhcp6_log', require('./routes/dhcp6_log'))
 app.use('/dhcp_config', require('./routes/dhcp_config'))
 app.use('/dhcp6_config', require('./routes/dhcp6_config'))
 app.use('/dhcpv4_pools', require('./routes/dhcpv4_pools'))
@@ -177,6 +178,7 @@ dhcp_leases.startLeaseListener(glass_config)
 dhcp_leases.setLeasesCleanTimer()
 glass_config_watcher.init()
 dhcp_log_watcher.init(glass_config)
+if (glass_config.v6_log_file) dhcp_log_watcher.init6(glass_config)
 
 /**
  * Timers
