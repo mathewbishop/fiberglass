@@ -6,11 +6,17 @@ var express = require('express')
 var router = express.Router()
 var authGuard = require('../core/auth-guard.js')
 var multer = require('multer')
+var fs = require('fs')
 
 var authCheck = authGuard({ groupPermissionLevel: 'admin' })
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
+    // make sure uploads dir is there
+    if (!fs.existsSync('./public/images/uploads')) {
+      fs.mkdirSync('./public/images/uploads')
+    }
+
     cb(null, 'public/images/uploads/')
   },
   filename: function (req, file, cb) {
@@ -29,8 +35,6 @@ router.post(
   function (req, res, next) {
     var request = req.body
     var json_file = require('jsonfile')
-
-    console.log(request)
 
     var glass_config = json_file.readFileSync('config/glass_config.json')
 
