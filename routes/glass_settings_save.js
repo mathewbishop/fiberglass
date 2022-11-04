@@ -30,6 +30,8 @@ router.post(
     var request = req.body
     var json_file = require('jsonfile')
 
+    console.log(request)
+
     var glass_config = json_file.readFileSync('config/glass_config.json')
 
     glass_config.leases_file = request.leases_file

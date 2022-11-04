@@ -104,7 +104,7 @@ router.get('/', authCheck, function (req, res, next) {
     '<br><button type="button" class="btn btn-info waves-effect" onclick="save_config()"><i class="material-icons">settings</i> <span>Save Config</span></button>'
   input += '<br><div id="glass_settings_result"></div>'
 
-  form_data = template_render.form_body('glass_settings_form', input)
+  form_data = template_render.form_body('glass-settings-inputs', input)
 
   glass_settings_template = template_render.set_template_variable(
     glass_settings_template,
