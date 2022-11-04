@@ -40,6 +40,7 @@ router.post(
     glass_config.v4_pools_file = request.v4_pools_file
     glass_config.v6_pools_file = request.v6_pools_file
     glass_config.log_file = request.log_file
+    glass_config.v6_log_file = request.v6_log_file
     glass_config.header_title = request.header_title
     glass_config.logo_background_color = request.logo_background_color
 

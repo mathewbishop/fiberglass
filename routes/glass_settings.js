@@ -68,6 +68,14 @@ router.get('/', authCheck, function (req, res, next) {
       '">'
   )
 
+  /* v6 Log File */
+  input += template_render.form_input(
+    'v6 Log File',
+    '<input type="input" class="form-control" id="v6_log_file" name="v6_log_file" placeholder="/var/log/dhcp6.log" value="' +
+      glass_config.v6_log_file +
+      '">'
+  )
+
   input += '<br>'
   input += '<br>'
   input += '<h2>UI Settings</h2>'
