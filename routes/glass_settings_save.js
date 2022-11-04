@@ -48,7 +48,7 @@ router.post(
 
     // if a favicon file was uploaded, set it
     if (req?.files?.favicon) {
-      glass_config.favicon_file_path = `../../images/uploads/${req.files.favicon[0].filename}`
+      glass_config.favicon_file_path = `images/uploads/${req.files.favicon[0].filename}`
     }
 
     json_file.writeFile(

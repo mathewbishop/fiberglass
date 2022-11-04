@@ -19,7 +19,6 @@ router.get('/', authCheck, function (req, res, next) {
   glass_config = json_file.readFileSync('config/glass_config.json')
 
   input = '<h2>Configuration</h2>'
-  input += '<br>'
 
   /* Leases File */
   input += template_render.form_input(
