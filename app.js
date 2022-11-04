@@ -177,8 +177,8 @@ dhcp_leases.parseLeasesFileOnce(glass_config)
 dhcp_leases.startLeaseListener(glass_config)
 dhcp_leases.setLeasesCleanTimer()
 glass_config_watcher.init()
-dhcp_log_watcher.init(glass_config)
-if (glass_config.v6_log_file) dhcp_log_watcher.init6(glass_config)
+dhcp_log_watcher.init(glass_config.log_file)
+dhcp_log_watcher.init(glass_config.v6_log_file)
 
 /**
  * Timers
