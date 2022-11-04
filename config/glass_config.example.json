@@ -17,6 +17,7 @@
   "sms_alert_to": "",
   "ws_port": 8080,
   "header_title": "ISC DHCP Server Interface",
-  "logo_file": "",
-  "logo_background_color": ""
+  "logo_file_path": "",
+  "logo_background_color": "",
+  "favicon_file_path": ""
 }

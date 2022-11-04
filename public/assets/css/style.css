@@ -7520,9 +7520,10 @@ fieldset[disabled] .form-control {
     position: relative;
     border-bottom: 1px solid #e9e9e9;
     /* background: url("../images/user-img-background.jpg") no-repeat no-repeat; */
-    background: url('../../images/fiberglass_logo4_with_text_transparent1.png'); 
+    background-image: url('../../images/fiberglass_logo4_with_text_transparent1.png'); 
     background-size: cover; 
     background-repeat: no-repeat; 
+    background-position: center center;
     background-color: #B5B5B5;
     height: 135px; 
   }
