@@ -118,6 +118,12 @@ service apparmor restart
 
 # Attribution/Credit
 
+**Scott Human**
+
+GitHub: https://github.com/ekko919
+
+The modifications that comprise FiberGlass (i.e the differences between Glass and FiberGlass such as local authentication, etc) were Scott's idea. 
+
 **Chris Miles' (chris.miles.e@gmail.com)**
 
 Author of original [glass-isc-dhcp](https://github.com/Akkadius/glass-isc-dhcp)
