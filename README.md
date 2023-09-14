@@ -38,19 +38,9 @@ FiberGlass runs on the following Node.js major versions:
 
 <br/>
 
-**Ubuntu**
+To install on Debian and Debian based distros, follow [the instructions from nodesource, here](https://github.com/nodesource/distributions#debian-and-ubuntu-based-distributions).
 
-```
-curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt-get install -y nodejs
-```
-
-**Debian**
-
-```
-curl -fsSL https://deb.nodesource.com/setup_16.x | bash - &&\
-apt-get install -y nodejs
-```
+<br/>
 
 ## Install `isc-dhcp-server`
 
