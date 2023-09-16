@@ -112,7 +112,7 @@ service apparmor restart
 
 GitHub: https://github.com/ekko919
 
-The modifications that comprise FiberGlass (i.e the differences between Glass and FiberGlass such as local authentication, etc) were Scott's idea. 
+This project was Scott's idea and vision. 
 
 **Chris Miles' (chris.miles.e@gmail.com)**
 
