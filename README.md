@@ -3,7 +3,7 @@
 
 ![fiberglass logo](./public/images/fiberglass_logo4_with_text_transparent1.png)
 
-`FiberGlass` is a fork of Chris Miles' (chris.miles.e@gmail.com) [Glass](https://github.com/Akkadius/glass-isc-dhcp) web UI for ISC DHCP. FiberGlass includes some additonal features like user authentication, user group authorization, additional configuration options and changes, and more.
+`FiberGlass` is a fork of Chris Miles' (chris.miles.e@gmail.com) [Glass](https://github.com/Akkadius/glass-isc-dhcp) web UI for ISC DHCP. FiberGlass includes some additonal features like user authentication, user group authorization, additional configuration options, and more.
 
 # Features
 
