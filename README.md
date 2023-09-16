@@ -7,7 +7,7 @@
 
 # Features
 
-See [the original README](./README.original.glass.md#features) for a full list of the original features of Glass.
+See [the original README](https://github.com/Akkadius/glass-isc-dhcp/blob/master/README.md#features) for a full list of the original features of Glass.
 
 FiberGlass adds the following features:
 
@@ -21,7 +21,7 @@ FiberGlass adds the following features:
 
 Only Debian-based distros are currently supported/tested/used. FiberGlass _may_ work on other distros, but we have not tried and the instructions here only cover Debian-based systems.
 
-_NOTE: some of these instructions are copied from the [original README](./README.original.glass.md#installation)._
+_NOTE: some of these instructions are copied from the [original README](https://github.com/Akkadius/glass-isc-dhcp/blob/master/README.md#installation)._
 
 ## Install NodeJS (If not installed)
 
@@ -89,7 +89,7 @@ Inside the `config` directory is a file named `glass_config.example.json` with a
 - For Debian this is all that is needed and FiberGlass should start immediately, you can browse via http://server-ip:3000
 - For Ubuntu users (or any system running `Apparmor`) - you will have additional Apparmor config to add
 - **Recommended** to iptables port 3000 to close off FiberGlass if you are facing the public on your server
-- **Recommended** to keep FiberGlass up through reboots, see [Glass Process Keepalive](./README.original.glass.md#glass-process-keepalive) _or create a `systemd` service for FiberGlass. NOTE: if you use the Glass Process Keepalive method, replace the `/opt/glass-isc-dhcp` directory with `/opt/fiberglass`, or whatever you've named the application directory._
+- **Recommended** to keep FiberGlass up through reboots, see [Glass Process Keepalive](https://github.com/Akkadius/glass-isc-dhcp/blob/master/README.md#installation) _or create a `systemd` service for FiberGlass. NOTE: if you use the Glass Process Keepalive method, replace the `/opt/glass-isc-dhcp` directory with `/opt/fiberglass`, or whatever you've named the application directory._
 
 ## Apparmor
 
@@ -112,7 +112,7 @@ service apparmor restart
 
 GitHub: https://github.com/ekko919
 
-This project was Scott's idea and vision. 
+This project was Scott's idea and vision.
 
 **Chris Miles' (chris.miles.e@gmail.com)**
 
@@ -127,7 +127,3 @@ Author of original [glass-isc-dhcp](https://github.com/Akkadius/glass-isc-dhcp)
 https://github.com/passport/todos-express-password -- example of implementing passport.js local auth with SQLite
 
 https://www.passportjs.org/tutorials/password/ -- tutorial for implementing passport.js local auth with SQLite
-
-# Notes
-
-The original `Glass` README file is preserved in this repo [here](./README.original.glass.md)
