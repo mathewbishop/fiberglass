@@ -62,9 +62,15 @@
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="/">[header_title]</a>
+            <div class="navbar-header" style="display: flex; align-items: center; justify-content: start; width: 100%;">
+                <div>
+                    <a href="javascript:void(0);" class="bars"></a>
+                    <a class="navbar-brand" href="/">[header_title]</a>
+                </div>
+                <form action="/logout" method="post" style="margin-left: auto;">
+                    <button type="submit" class="btn btn-sm" style="display: block;">Logout</button>
+                </form>
+
             </div>
         </div>
     </nav>
@@ -364,6 +370,13 @@
                 }
             })
         }
+
+        // function logout() {
+        //     $.ajax({
+        //         url: "/logout",
+        //         type: "DELETE",
+        //     })
+        // }
 
         // get the current user and show/hide nav based on authGroup
         user_check()
