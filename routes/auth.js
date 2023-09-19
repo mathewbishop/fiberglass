@@ -75,11 +75,4 @@ router.post(
   })
 )
 
-router.delete("/", function(req, res, next) {
-  req.logOut(function(err) {
-    if (err) return next(err)
-    res.redirect("/login")
-  })
-})
-
 module.exports = router
