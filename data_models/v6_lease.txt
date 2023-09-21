@@ -1,0 +1,21 @@
+ia-na "\016E$\010\000\004\331`x\363\024X\013p\371\022\371\256s\257\210K" {
+  cltt 2 2023/09/19 04:09:53;
+  iaaddr 2601:b051:0:602:accf:a6e6:4e73:adaa {
+    binding state active;
+    preferred-life 120;
+    max-life 120;
+    ends 2 2023/09/19 04:11:53;
+  }
+}
+
+server-duid "\000\001\000\001,\233\305\023\000\034Bf\314\036";
+
+ia-na "\016E$\010\000\004\331`x\363\024X\013p\371\022\371\256s\257\210K" {
+  cltt 2 2023/09/19 04:09:53;
+  iaaddr 2601:b051:0:602:accf:a6e6:4e73:adaa {
+    binding state expired;
+    preferred-life 120;
+    max-life 120;
+    ends 2 2023/09/19 04:11:53;
+  }
+}

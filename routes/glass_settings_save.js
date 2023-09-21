@@ -39,6 +39,7 @@ router.post(
     var glass_config = json_file.readFileSync('config/glass_config.json')
 
     glass_config.leases_file = request.leases_file
+    glass_config.v6_leases_file = request.leases_file
     glass_config.config_file = request.config_file
     glass_config.v6_config_file = request.v6_config_file
     glass_config.v4_pools_file = request.v4_pools_file

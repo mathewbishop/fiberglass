@@ -55,7 +55,7 @@ if (glass_config.ip_ranges_to_allow[0] !== '') {
  */
 app.use('/login', require('./routes/auth'))
 app.use('/login/password', require('./routes/auth'))
-app.use('/logout', require("./routes/logout"))
+app.use('/logout', require('./routes/logout'))
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/users'))
 app.use('/get_stats', require('./routes/get_stats'))
@@ -139,6 +139,7 @@ global.current_leases_per_second = 0
 global.current_time = 0
 global.debug_watch_lease_parse_stream = 0
 global.dhcp_lease_data = {}
+global.v6_dhcp_lease_data = {}
 global.dhcp_requests = {}
 global.leases_last_update_time = 0
 global.leases_per_minute = 0
@@ -176,6 +177,8 @@ let app_timers = require('./core/app-timers')
 oui_reader.initOuiDatabase()
 dhcp_leases.parseLeasesFileOnce(glass_config)
 dhcp_leases.startLeaseListener(glass_config)
+dhcp_leases.parseV6LeasesFileOnce(glass_config)
+dhcp_leases.startV6LeaseListener(glass_config)
 dhcp_leases.setLeasesCleanTimer()
 glass_config_watcher.init()
 dhcp_log_watcher.init(glass_config.log_file)
@@ -329,6 +332,10 @@ setTimeout(function () {
   let alert_check_timer = setInterval(function () {
     // console.log("[Timer] Alert Timer check");
     if (glass_config.leases_per_minute_threshold > 0) {
+      console.log(
+        'LEASES PER MINUTE THRESHOLD',
+        glass_config.leases_per_minute_threshold
+      )
       // console.log("[Timer] lpm: %s lpm_th: %s", leases_per_minute, glass_config.leases_per_minute_threshold);
       if (
         leases_per_minute <= glass_config.leases_per_minute_threshold &&
@@ -406,6 +413,7 @@ setTimeout(function () {
       glass_config.shared_network_critical_threshold > 0
     ) {
       const execSync = require('child_process').execSync
+      // starting a child process here
       output = execSync(
         './bin/dhcpd-pools -c ' +
           glass_config.config_file +

@@ -22,9 +22,17 @@ router.get('/', authCheck, function (req, res, next) {
 
   /* Leases File */
   input += template_render.form_input(
-    'Leases File',
+    'v4 Leases File',
     '<input type="input" class="form-control" id="leases_file" name="leases_file" placeholder="/var/lib/dhcp/dhcpd.leases" value="' +
       glass_config.leases_file +
+      '">'
+  )
+
+  /* v6 Leases File */
+  input += template_render.form_input(
+    'v6 Leases File',
+    '<input type="input" class="form-control" id="v6_leases_file" name="v6_leases_file" placeholder="/var/lib/dhcp/dhcpd6.leases" value="' +
+      glass_config.v6_leases_file +
       '">'
   )
 
