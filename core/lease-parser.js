@@ -179,13 +179,15 @@ module.exports = {
     let lease_data = input.split('\n')
     for (i = 0; i < lease_data.length; i++) {
       if (lease_data[i].startsWith('ia-na')) {
-        // May be used later
-        // let leaseId = lease_data[i].split('{')[0].trim().split(' ')[1]
-        // let cltt = lease_data[i + 1].trim()
-        // let bindingState = lease_data[i + 3].trim()
-        // let preferredLife = lease_data[i + 4].trim()
-        // let maxLife = lease_data[i + 5].trim()
-        // let ends = lease_data[i + 6].trim()
+        let v6_address = lease_data[i + 2].split('{')[0].trim().split(' ')[1]
+        // the addr is the key in each lease data object
+        // {
+        //   "2600::0::0(you get the point)": {
+        //     "start": "<date>",
+        //     "end": "<date>"
+        //   }
+        // }
+        v6_dhcp_lease_data[v6_address] = {}
 
         let dateString = lease_data[i + 6]
           .trim()
@@ -202,12 +204,7 @@ module.exports = {
 
         let end_unix_time = Date.parse(date) / 1000
 
-        v6_dhcp_lease_data[ip_address] = lease_data[i + 2]
-          .split('{')[0]
-          .trim()
-          .split(' ')[1]
-
-        v6_dhcp_lease_data[ip_address].end = end_unix_time
+        v6_dhcp_lease_data[v6_address].end = end_unix_time
       }
     }
     return
