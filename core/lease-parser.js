@@ -176,10 +176,13 @@ module.exports = {
     return
   },
   parseV6: function (input) {
-    let lease_data = input.split('\n')
-    for (i = 0; i < lease_data.length; i++) {
-      if (lease_data[i].startsWith('ia-na')) {
-        let v6_address = lease_data[i + 2].split('{')[0].trim().split(' ')[1]
+    let leaseFileEntries = input.split('\n\n')
+    leaseFileEntries.forEach((entry) => {
+      // not every entry is guaranteed to be a lease block
+      // some entries are a line that starts with "server-duid"
+      const leaseBlock = entry.match(/iaaddr (?<v6_address>[^ ]+) {([\s\S]*?)}/)
+      if (leaseBlock) {
+        const v6_address = leaseBlock.groups.v6_address
         // the addr is the key in each lease data object
         // {
         //   "2600::0::0(you get the point)": {
@@ -188,25 +191,26 @@ module.exports = {
         //   }
         // }
         v6_dhcp_lease_data[v6_address] = {}
+        const leaseInfo = leaseBlock[0]
 
-        let dateString = lease_data[i + 6]
-          .trim()
-          .split(' ')[2]
-          .trim()
-          .split('/')
-          .join('-')
-        let timeString = lease_data[i + 6]
-          .trim()
-          .split(' ')[3]
-          .split(';')[0]
-          .trim()
-        let date = `${dateString} ${timeString} UTC`
-
-        let end_unix_time = Date.parse(date) / 1000
-
-        v6_dhcp_lease_data[v6_address].end = end_unix_time
+        const endMatch = leaseInfo.match(
+          /ends (?<end_time>\d+ \d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2});/
+        )
+        if (endMatch) {
+          const endDate = endMatch.groups.end_time
+            .split(' ')[1]
+            .trim()
+            .split('/')
+            .join('-')
+          const endTime = endMatch.groups.end_time.split(' ')[2].trim()
+          const endDateTime = `${endDate} ${endTime} UTC`
+          const endUnixTime = Date.parse(endDateTime) / 1000
+          v6_dhcp_lease_data[v6_address] = {
+            end: endUnixTime,
+          }
+        }
       }
-    }
+    })
     return
   },
   clean: function () {
