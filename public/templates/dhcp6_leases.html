@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="header">
+        <h2>Active Leases</h2>
+    </div>
+    <div class="body">
+
+        <div id="glass-alerts-form"><label>Search Active Leases</label>
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="input" class="form-control" id="v6_lease_search_criteria"
+                        placeholder="Enter Search Criteria...">
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <div id="search_result"></div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var e = jQuery.Event("keypress");
+        e.which = 13; // Enter
+        e.keyCode = 13;
+        $("#v6_lease_search_criteria").trigger(e);
+    });
+    /*
+$('#display-leases').DataTable({
+    dom: 'tip',
+    responsive: true,
+    "pageLength": 100,
+    "aaSorting": []
+});
+*/
+</script>

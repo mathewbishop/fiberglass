@@ -245,3 +245,25 @@ $(document).on('keypress', '#lease_search_criteria', function (e) {
     )
   }
 })
+
+$(document).on('keypress', '#v6_lease_search_criteria', function (e) {
+  if (e.which == 13) {
+    $('#search_result').html(loader_html)
+    $.post(
+      '/dhcp6_lease_search',
+      { search: $('#v6_lease_search_criteria').val() },
+      function (result) {
+        $('#search_result').html(result)
+
+        if (typeof display_leases !== 'undefined') display_leases.destroy()
+
+        display_leases = $('#display-leases').DataTable({
+          dom: 'tip',
+          responsive: true,
+          pageLength: 100,
+          aaSorting: [],
+        })
+      }
+    )
+  }
+})

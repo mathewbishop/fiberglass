@@ -1,5 +1,6 @@
 {
   "leases_file": "/var/lib/dhcp/dhcpd.leases",
+  "v6_leases_file": "/var/lib/dhcp/dhcpd6.leases",
   "log_file": "/var/log/dhcp.log",
   "v6_log_file": "/var/log/dhcp6.log",
   "config_file": "/etc/dhcp/dhcpd.conf",

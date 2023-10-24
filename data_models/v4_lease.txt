@@ -1,0 +1,33 @@
+lease 172.17.17.100 {
+  starts 2 2023/09/19 04:09:21;
+  ends 2 2023/09/19 04:14:21;
+  tstp 2 2023/09/19 04:14:21;
+  cltt 2 2023/09/19 04:09:21;
+  binding state free;
+  hardware ethernet 00:1c:42:1a:3c:1d;
+  uid "\001\000\034B\032<\035";
+}
+server-duid "\000\001\000\001,\233\273i\000\034Bf\314\036";
+
+lease 172.17.17.100 {
+  starts 4 2023/09/21 19:40:32;
+  ends 4 2023/09/21 19:45:32;
+  cltt 4 2023/09/21 19:40:32;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 00:1c:42:1a:3c:1d;
+  uid "\001\000\034B\032<\035";
+  client-hostname "ubuntu-linux-22-04-02-desktop";
+}
+lease 172.17.17.100 {
+  starts 4 2023/09/21 19:43:03;
+  ends 4 2023/09/21 19:48:03;
+  cltt 4 2023/09/21 19:43:03;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 00:1c:42:1a:3c:1d;
+  uid "\001\000\034B\032<\035";
+  client-hostname "ubuntu-linux-22-04-02-desktop";
+}
