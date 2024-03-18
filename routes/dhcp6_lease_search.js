@@ -40,10 +40,6 @@ router.post('/', authCheck, function (req, res, next) {
 
   var count = 0
   for (var key in v6_dhcp_lease_data) {
-    console.log(
-      '🚀 ~ file: dhcp6_lease_search.js:43 ~ v6_dhcp_lease_data:',
-      v6_dhcp_lease_data
-    )
     var matcher = new RegExp(search, 'i')
 
     // console.log(dhcp_lease_data[key]);
