@@ -59,6 +59,16 @@ router.post('/', authCheck, function (req, res, next) {
     table_row =
       table_row +
       '<td>' +
+      human_time(v6_dhcp_lease_data[key]?.cltt * 1000) +
+      '</td>'
+    table_row =
+      table_row + '<td>' + v6_dhcp_lease_data[key]?.bindingState + '</td>'
+    table_row =
+      table_row + '<td>' + v6_dhcp_lease_data[key]?.preferredLife + '</td>'
+    table_row = table_row + '<td>' + v6_dhcp_lease_data[key]?.maxLife + '</td>'
+    table_row =
+      table_row +
+      '<td>' +
       human_time(v6_dhcp_lease_data[key]?.end * 1000) +
       '</td>'
     if (typeof v6_dhcp_lease_data[key]?.mac !== 'undefined') {
