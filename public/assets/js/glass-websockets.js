@@ -8,10 +8,8 @@ function check_websocket_connection() {
 }
 
 function websockets_subscribe_event(event) {
-  if (socket) {
-    socket.send(JSON.stringify({ event_subscription: event }))
-    subscribed_events[event] = true
-  }
+  socket.send(JSON.stringify({ event_subscription: event }))
+  subscribed_events[event] = true
 }
 
 function websockets_unsubscribe_event(event) {
