@@ -203,7 +203,7 @@ module.exports = {
             .split('/')
             .join('-')
           const clttTime = clttMatch.groups.cltt_time.split(' ')[2].trim()
-          const clttDateTime = `${clttDate} ${clttTime} UTC`
+          const clttDateTime = `${clttDate}T${clttTime}.000Z`
           const clttUnixTime = Date.parse(clttDateTime) / 1000
           v6_dhcp_lease_data[v6_address].cltt = clttUnixTime
         }
