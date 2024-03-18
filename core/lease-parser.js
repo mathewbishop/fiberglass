@@ -193,6 +193,45 @@ module.exports = {
         v6_dhcp_lease_data[v6_address] = {}
         const leaseInfo = leaseBlock[0]
 
+        const clttMatch = leaseInfo.match(
+          /cltt (?<cltt_time>\d+ \d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2});/
+        )
+        if (clttMatch) {
+          const clttDate = clttMatch.groups.cltt_time
+            .split(' ')[1]
+            .trim()
+            .split('/')
+            .join('-')
+          const clttTime = clttMatch.groups.cltt_time.split(' ')[2].trim()
+          const clttDateTime = `${clttDate} ${clttTime} UTC`
+          const clttUnixTime = Date.parse(clttDateTime) / 1000
+          v6_dhcp_lease_data[v6_address].cltt = clttUnixTime
+        }
+
+        const bindingStateMatch = leaseInfo.match(
+          /binding state (?<binding_state>\\w+);/
+        )
+        if (bindingStateMatch) {
+          v6_dhcp_lease_data[v6_address].bindingState =
+            bindingStateMatch.groups.binding_state
+        }
+
+        const preferredLifeMatch = leaseInfo.match(
+          /preferred-life (?<preferred_life>\\d+);/
+        )
+        if (preferredLifeMatch) {
+          v6_dhcp_lease_data[v6_address].preferredLife = parseInt(
+            preferredLifeMatch.groups.preferred_life
+          )
+        }
+
+        const maxLifeMatch = leaseInfo.match(/max-life (?<max_life>\\d+);/)
+        if (maxLifeMatch) {
+          v6_dhcp_lease_data[v6_address].maxLife = parseInt(
+            maxLifeMatch.groups.max_life
+          )
+        }
+
         const endMatch = leaseInfo.match(
           /ends (?<end_time>\d+ \d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2});/
         )
