@@ -194,7 +194,7 @@ module.exports = {
         const leaseInfo = leaseBlock[0]
 
         const clttMatch = leaseInfo.match(
-          /(\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})/
+          /(?<cltt_time>\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})/
         )
         console.log('🚀 ~ leaseFileEntries.forEach ~ clttMatch:', clttMatch)
         if (clttMatch) {
