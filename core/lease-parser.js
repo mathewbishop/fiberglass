@@ -192,9 +192,8 @@ module.exports = {
         // }
         v6_dhcp_lease_data[v6_address] = {}
         const leaseInfo = leaseBlock[0]
-        console.log('🚀 ~ leaseFileEntries.forEach ~ leaseInfo:', leaseInfo)
 
-        const clttMatch = leaseInfo.match(
+        const clttMatch = entry.match(
           /cltt (?<cltt>\d+ \d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2});/
         )
         if (clttMatch) {
