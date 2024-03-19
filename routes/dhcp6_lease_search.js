@@ -57,10 +57,7 @@ router.post('/', authCheck, function (req, res, next) {
     table_row = ''
     table_row = table_row + '<td>' + key + '</td>'
     table_row =
-      table_row +
-      '<td>' +
-      human_time(v6_dhcp_lease_data[key]?.cltt * 1000) +
-      '</td>'
+      table_row + '<td>' + human_time(v6_dhcp_lease_data[key]?.cltt) + '</td>'
     table_row =
       table_row + '<td>' + v6_dhcp_lease_data[key]?.bindingState + '</td>'
     table_row =
