@@ -199,23 +199,9 @@ module.exports = {
         if (clttMatch) {
           const dateTimeString = clttMatch.groups.cltt
           const [dateString, timeString] = dateTimeString.split(' ')
-          console.log(
-            '🚀 ~ leaseFileEntries.forEach ~ dateString, timeString:',
-            `${dateString} ${timeString}`
-          )
           const clttDateTime = `${dateString} ${timeString} UTC`
-          console.log(
-            '🚀 ~ leaseFileEntries.forEach ~ clttDateTime:',
-            clttDateTime
-          )
           const clttUnixTime = Date.parse(clttDateTime) / 1000
-          console.log(
-            '🚀 ~  leaseFileEntries.forEach ~ clttUnixTime:',
-            clttUnixTime
-          )
-          v6_dhcp_lease_data[v6_address].cltt = {
-            cltt: clttUnixTime,
-          }
+          v6_dhcp_lease_data[v6_address].cltt = clttUnixTime
         }
 
         const bindingStateMatch = leaseInfo.match(
@@ -254,9 +240,7 @@ module.exports = {
           const endTime = endMatch.groups.end_time.split(' ')[2].trim()
           const endDateTime = `${endDate} ${endTime} UTC`
           const endUnixTime = Date.parse(endDateTime) / 1000
-          v6_dhcp_lease_data[v6_address] = {
-            end: endUnixTime,
-          }
+          v6_dhcp_lease_data[v6_address].end = endUnixTime
         }
       }
     })
