@@ -196,6 +196,7 @@ module.exports = {
         const clttMatch = leaseInfo.match(
           /cltt (?<cltt_time>\d+ \d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2});/
         )
+        console.log('🚀 ~ leaseFileEntries.forEach ~ clttMatch:', clttMatch)
         if (clttMatch) {
           console.log('🚀 ~ leaseFileEntries.forEach ~ clttMatch:', clttMatch)
           const clttDate = clttMatch.groups.cltt_time
