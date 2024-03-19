@@ -198,11 +198,7 @@ module.exports = {
         )
         if (clttMatch) {
           const dateTimeString = clttMatch.groups.cltt
-          console.log(
-            '🚀 ~ leaseFileEntries.forEach ~ dateTimeString:',
-            dateTimeString
-          )
-          const [dateString, timeString] = dateTimeString.split(' ')
+          const [_, dateString, timeString] = dateTimeString.split(' ')
           const clttDateTime = `${dateString} ${timeString} UTC`
           const clttUnixTime = Date.parse(clttDateTime) / 1000
           v6_dhcp_lease_data[v6_address].cltt = clttUnixTime
