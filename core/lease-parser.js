@@ -207,6 +207,10 @@ module.exports = {
         const bindingStateMatch = leaseInfo.match(
           /binding state (?<binding_state>\\w+);/
         )
+        console.log(
+          '🚀 ~ leaseFileEntries.forEach ~ bindingStateMatch:',
+          bindingStateMatch
+        )
         if (bindingStateMatch) {
           v6_dhcp_lease_data[v6_address].bindingState =
             bindingStateMatch.groups.binding_state
