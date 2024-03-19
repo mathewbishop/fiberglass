@@ -196,6 +196,7 @@ module.exports = {
         const clttMatch = entry.match(
           /cltt (?<cltt>\d+ \d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2});/
         )
+        console.log('🚀 ~ leaseFileEntries.forEach ~ clttMatch:', clttMatch)
         if (clttMatch) {
           const dateTimeString = clttMatch.groups.cltt
           const [dateString, timeString] = dateTimeString.split(' ')
