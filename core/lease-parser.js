@@ -205,7 +205,7 @@ module.exports = {
         }
 
         const bindingStateMatch = leaseInfo.match(
-          /binding state (?<binding_state>\\w+);/
+          /binding state (?<binding_state>\w+);/
         )
         console.log(
           '🚀 ~ leaseFileEntries.forEach ~ bindingStateMatch:',
