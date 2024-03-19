@@ -196,9 +196,12 @@ module.exports = {
         const clttMatch = entry.match(
           /cltt (?<cltt>\d+ \d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2});/
         )
-        console.log('🚀 ~ leaseFileEntries.forEach ~ clttMatch:', clttMatch)
         if (clttMatch) {
           const dateTimeString = clttMatch.groups.cltt
+          console.log(
+            '🚀 ~ leaseFileEntries.forEach ~ dateTimeString:',
+            dateTimeString
+          )
           const [dateString, timeString] = dateTimeString.split(' ')
           const clttDateTime = `${dateString} ${timeString} UTC`
           const clttUnixTime = Date.parse(clttDateTime) / 1000
