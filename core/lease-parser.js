@@ -213,7 +213,9 @@ module.exports = {
             '🚀 ~  leaseFileEntries.forEach ~ clttUnixTime:',
             clttUnixTime
           )
-          v6_dhcp_lease_data[v6_address].cltt = clttUnixTime
+          v6_dhcp_lease_data[v6_address].cltt = {
+            cltt: clttUnixTime,
+          }
         }
 
         const bindingStateMatch = leaseInfo.match(
