@@ -197,12 +197,15 @@ module.exports = {
           /cltt (?<cltt_time>\d+ \d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2});/
         )
         if (clttMatch) {
+          console.log('🚀 ~ leaseFileEntries.forEach ~ clttMatch:', clttMatch)
           const clttDate = clttMatch.groups.cltt_time
             .split(' ')[1]
             .trim()
             .split('/')
             .join('-')
+          console.log('🚀 ~ leaseFileEntries.forEach ~ clttDate:', clttDate)
           const clttTime = clttMatch.groups.cltt_time.split(' ')[2].trim()
+          console.log('🚀 ~ leaseFileEntries.forEach ~ clttTime:', clttTime)
           const clttDateTime = `${clttDate}T${clttTime}.000Z`
           const clttUnixTime = Date.parse(clttDateTime) / 1000
           v6_dhcp_lease_data[v6_address].cltt = clttUnixTime
