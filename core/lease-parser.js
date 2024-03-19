@@ -198,29 +198,9 @@ module.exports = {
         )
         if (clttMatch) {
           const dateTimeString = clttMatch.groups.cltt
-          console.log(
-            '🚀 ~ leaseFileEntries.forEach ~ dateTimeString:',
-            dateTimeString
-          )
           const [dateString, timeString] = dateTimeString.split(' ')
-          const [year, month, date] = dateString.split('/')
-          const [hours, minutes, seconds] = timeString.split(':')
-
-          const clttDate = new Date(
-            parseInt(year),
-            parseInt(month) - 1, // Month is zero-indexed
-            parseInt(date),
-            parseInt(hours),
-            parseInt(minutes),
-            parseInt(seconds)
-          )
-          console.log('JS DATE', clttDate)
-
-          const clttUnixTime = Math.floor(clttDate.getTime() / 1000)
-          console.log(
-            '🚀 ~ leaseFileEntries.forEach ~ clttUnixTime:',
-            clttUnixTime
-          )
+          const clttDateTime = `${dateString} ${timeString} UTC`
+          const clttUnixTime = Date.parse(clttDateTime) / 1000
           v6_dhcp_lease_data[v6_address].cltt = clttUnixTime
         }
 
