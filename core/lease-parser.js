@@ -232,13 +232,9 @@ module.exports = {
           /ends (?<end_time>\d+ \d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2});/
         )
         if (endMatch) {
-          const endDate = endMatch.groups.end_time
-            .split(' ')[1]
-            .trim()
-            .split('/')
-            .join('-')
-          const endTime = endMatch.groups.end_time.split(' ')[2].trim()
-          const endDateTime = `${endDate} ${endTime} UTC`
+          const dateTimeString = endMatch.groups.end_time
+          const [_, dateString, timeString] = dateTimeString.split(' ')
+          const endDateTime = `${dateString} ${timeString} UTC`
           const endUnixTime = Date.parse(endDateTime) / 1000
           v6_dhcp_lease_data[v6_address].end = endUnixTime
         }
