@@ -196,6 +196,7 @@ module.exports = {
         const clttMatch = leaseInfo.match(
           /(?<cltt>\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2})/
         )
+        console.log('🚀 ~ leaseFileEntries.forEach ~ clttMatch:', clttMatch)
         if (clttMatch) {
           const dateTimeString = clttMatch.groups.cltt
           const [dateString, timeString] = dateTimeString.split(' ')
@@ -231,6 +232,7 @@ module.exports = {
         const endMatch = leaseInfo.match(
           /ends (?<end_time>\d+ \d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2});/
         )
+        console.log('🚀 ~ leaseFileEntries.forEach ~ endMatch:', endMatch)
         if (endMatch) {
           const endDate = endMatch.groups.end_time
             .split(' ')[1]
