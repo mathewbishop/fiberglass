@@ -207,17 +207,13 @@ module.exports = {
         const bindingStateMatch = leaseInfo.match(
           /binding state (?<binding_state>\w+);/
         )
-        console.log(
-          '🚀 ~ leaseFileEntries.forEach ~ bindingStateMatch:',
-          bindingStateMatch
-        )
         if (bindingStateMatch) {
           v6_dhcp_lease_data[v6_address].bindingState =
             bindingStateMatch.groups.binding_state
         }
 
         const preferredLifeMatch = leaseInfo.match(
-          /preferred-life (?<preferred_life>\\d+);/
+          /preferred-life (?<preferred_life>\d+);/
         )
         if (preferredLifeMatch) {
           v6_dhcp_lease_data[v6_address].preferredLife = parseInt(
@@ -225,7 +221,7 @@ module.exports = {
           )
         }
 
-        const maxLifeMatch = leaseInfo.match(/max-life (?<max_life>\\d+);/)
+        const maxLifeMatch = leaseInfo.match(/max-life (?<max_life>\d+);/)
         if (maxLifeMatch) {
           v6_dhcp_lease_data[v6_address].maxLife = parseInt(
             maxLifeMatch.groups.max_life
